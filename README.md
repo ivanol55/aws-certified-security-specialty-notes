@@ -1,4 +1,4 @@
-# aws-certified-security-specialty-notes
+# AWS Certified Security Specialty notes
 ## What are these notes for?
 The aim for these notes kept in this repository serve the purpose of preparing you for the **certification exam** of "AWS Certified Security - Specialty". This aims to consolidate your knowledge of the security requirements of:
 - **Access management**: Control who can access your platform and how they do it
