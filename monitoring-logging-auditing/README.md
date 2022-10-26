@@ -1,2 +1,2 @@
-# Best practices and automation
+# Monitoring, logging and auditing
 ## Introduction
