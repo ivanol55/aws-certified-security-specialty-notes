@@ -190,19 +190,19 @@ Several steps are involved each time a policy permission is evaluated. Here's th
     4. Organizations **Service Control Policies**
 4. **Returning the permission result**, step in which, based on the policies considered, AWS will either *allow or deny the request*.
 
- ## Federated and Mobile access
- Sometimes access to an AWS account needs to scale to hundreds or even thousands of users, and IAM user management **stops being a feasible task**. At some point, even a *possible* one due to service limitations, or maybe millions of users in a game that need to save progress in one of your databases? that's where Federated and Mobile access comes in.
+## Federated and Mobile access
+Sometimes access to an AWS account needs to scale to hundreds or even thousands of users, and IAM user management **stops being a feasible task**. At some point, even a *possible* one due to service limitations, or maybe millions of users in a game that need to save progress in one of your databases? that's where Federated and Mobile access comes in.
 
- ### AWS Federated access
- AWS Federated access allows to delegate identification of users to **external identity providers**, like for example Google Single Sign-On or Microsoft Active Directory with **SAML federation** or other forms of **social federation**. This removes the load of handling user identities through the `Identity and Access Management` service.
+### AWS Federated access
+AWS Federated access allows to delegate identification of users to **external identity providers**, like for example Google Single Sign-On or Microsoft Active Directory with **SAML federation** or other forms of **social federation**. This removes the load of handling user identities through the `Identity and Access Management` service.
 
- Once this set-up is configured, users will be able to access the AWS console through their identity provider with the AWS login portal, and upon login, will assume the **SAML 2.0 Federation**-type role we created and they will be able to use the role's permissions as expected. The same action can be configured using **Social identity providers**, like Facebook or Google (the "Login with Google" buttons are usually this)
+Once this set-up is configured, users will be able to access the AWS console through their identity provider with the AWS login portal, and upon login, will assume the **SAML 2.0 Federation**-type role we created and they will be able to use the role's permissions as expected. The same action can be configured using **Social identity providers**, like Facebook or Google (the "Login with Google" buttons are usually this)
 
- Another option for authentication control is the AWS service **Amazon Cognito**, which was built specifically to handle millions of users accessing your application with secure log-in routines with security features like MFA device requirement enforcing, and once logged in, automatically generate **access tokens** you can handle through your application to gran them the necessary permissions. These accounts do not give access to AWS resources themselves, as they are intended for **application authentication**.
+Another option for authentication control is the AWS service **Amazon Cognito**, which was built specifically to handle millions of users accessing your application with secure log-in routines with security features like MFA device requirement enforcing, and once logged in, automatically generate **access tokens** you can handle through your application to gran them the necessary permissions. These accounts do not give access to AWS resources themselves, as they are intended for **application authentication**.
 
- ### Amazon Cognito Mobile access
- Amazon cognito has two main internal elements that we need to understand: **user pools** and **identity pools**. The first one are, in essence, user directories that scale as we need them, granting access to existing users or allowing users to federate their access through social identity providers, and the user pool stores a **profile** for every user inside it. It also allows creating identity pool groups, assigning different permissions to each group as needed.
+### Amazon Cognito Mobile access
+Amazon cognito has two main internal elements that we need to understand: **user pools** and **identity pools**. The first one are, in essence, user directories that scale as we need them, granting access to existing users or allowing users to federate their access through social identity providers, and the user pool stores a **profile** for every user inside it. It also allows creating identity pool groups, assigning different permissions to each group as needed.
 
- On the other hand, **identity pools** are used to connect a certain user with the AWS services your user needs to access. It does this by providing your user pool-issued user authentication token and returning temporary credentials to access these services needed by your application. User pool authenticates your users, identity pools give that user credential service access.
+On the other hand, **identity pools** are used to connect a certain user with the AWS services your user needs to access. It does this by providing your user pool-issued user authentication token and returning temporary credentials to access these services needed by your application. User pool authenticates your users, identity pools give that user credential service access.
 
- Authentication from the user to the user pool can be skipped by the use of **social login** identity providers, where the user logs into social login, and the social logins authenticate to the user pool and return a token, acting as a middle-man in the process.
+Authentication from the user to the user pool can be skipped by the use of **social login** identity providers, where the user logs into social login, and the social logins authenticate to the user pool and return a token, acting as a middle-man in the process.
