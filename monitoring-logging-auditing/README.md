@@ -80,35 +80,15 @@ When forensics investigation of an AWS account needs to be executed, part of tha
 ### Auditing configuration changes through AWS Config
 With how many services AWS provides and can be part of your application, it's **easy to get lost on the changes** that are constantly running on your existing resources. You could still be **running unnecessary legacy infrastructure** which could represent a security risk, or miss a connection between two of your hundreds or thousands of networking connections that represents a **potential incident**.
 
-Answering these questions is necessary for a security audit, but gathering this information is usually a very long and involved process we need to manually run. AWS Config is the service that helps answering these questions in an **automated**, **auditable** and **compliant** manner. This is thanks to several internal elements of this service, which we will explain in detail below.
+Answering these questions is necessary for a security audit, but gathering this information is usually a very long and involved process we need to manually run. AWS Config is the service that helps answering these questions in an **automated**, **auditable** and **compliant** manner. This is thanks to several internal elements of this service:
 
-#### Configuration items
----
-This represents a **configuration point-in-time snapshot** of a specific AWS resource: metadata, attributes, resource relationships, and configuration options. This is **updated every time the resource changes**.
-
-#### Configuraton streams
----
-When a new Configuration Item is created, it is added to its Configuration stream, which is essentially an SNS topic inside AWS Config. This enables us to **notify about changes in critical resources** as we see fit.
-
-#### Configuration history
----
-Thanks to storing Configuriation Items cronologically, we can see a history of the configuration of each resource in our infrastructure. **what** changed, **when** it was modified, and **who** ran that modification.
-
-#### Configuration snapshots
----
-This element allows us to get a **point-in-time report** of how our entire infrastructure was configured at a selected time, and can be exported on demand as needed.
-
-#### Configuration recorders
----
-A configuration recorder is the resource that **lets AWS Config gather information** streaming into the service. It is created when configuring the service, and it **allows us to pause AWS Config** if necessary.
-
-#### AWS Config rules
----
-Config rules allow us to **monitor certain critical resources** inside of our infrastructure and **send us a notification** if their configuration steps **out of our established security standards** to apply **corrective actions**.
-
-#### Resource relationships
----
-This feature allows us to see a **map of the relationships between resources** in our infrastructure. For example, if we get a notification that a security group has been modified, we can run an AWS Config resource relationship report and see which instances this security group is attached to.
+- **Configuration items**: This represents a *configuration point-in-time snapshot* of a specific AWS resource: metadata, attributes, resource relationships, and configuration options. This is *updated every time the resource changes*.
+- **Configuraton streams**: When a new Configuration Item is created, it is added to its Configuration stream, which is essentially an SNS topic inside AWS Config. This enables us to *notify about changes in critical resources* as we see fit.
+- **Configuration history**: Thanks to storing Configuriation Items cronologically, we can see a history of the configuration of each resource in our infrastructure. *what* changed, *when* it was modified, and *who* ran that modification.
+- **Configuration snapshots**: This element allows us to get a *point-in-time report* of how our entire infrastructure was configured at a selected time, and can be exported on demand as needed.
+- **Configuration recorders**: A configuration recorder is the resource that *lets AWS Config gather information* streaming into the service. It is created when configuring the service, and it *allows us to pause AWS Config* if necessary.
+- **AWS Config rules**: Config rules allow us to *monitor certain critical resources* inside of our infrastructure and *send us a notification* if their configuration steps *out of our established security standards* to apply *corrective actions*.
+- **Resource relationships**: This feature allows us to see a *map of the relationships between resources* in our infrastructure. For example, if we get a notification that a security group has been modified, we can run an *AWS Config resource relationship report* and see which instances this security group is attached to.
 
 #### The AWS config process
 ---
